@@ -1,0 +1,25 @@
+Problem 1:
+
+1: 10000000000n^2 vs n^3
+    n^3 is asymptotically greater than n^2
+2: n^2log(n) vs n(log(n))^10
+    n^2log(n) is asymptotically greater because n^2 > n
+3: n^(log(n)) vs 2^(2n)
+    n^(log(n)) because n > 2 which is a constant
+4: 2^n vs 2^(2n)
+    2^(2n) because 2n is still greater than n
+
+Problem 2:
+
+isPrime(n):
+  for(i = 2, i*i <= n; i++) { --------------- sqrt(n)
+    if(n % i == 0) {
+      return false
+    }
+  return true
+
+Best Case: O(1)         *if n = 2 then O(1)
+Avg Case: O(sqrt(n))
+Worst Case: O(sqrt(n))
+
+Reason: i*i <= n --> i^(2) = n --> i = sqrt(n)

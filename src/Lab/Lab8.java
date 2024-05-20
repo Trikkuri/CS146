@@ -1,5 +1,7 @@
 package Lab;
 
+//Explanation at the bottom
+
 import java.util.Scanner;
 
 public class Lab8 {
@@ -37,3 +39,7 @@ public class Lab8 {
         scanner.close();
     }
 }
+
+/*
+
+ */

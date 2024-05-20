@@ -11,7 +11,7 @@ public class Lab1 {
                 }
             }
         }
-        throw new IllegalArgumentException("No two sum solution");
+        throw new IllegalArgumentException("No solution");
     }
 
     public static void main(String[] args) {

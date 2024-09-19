@@ -45,28 +45,32 @@ public class MaxHeap
     public void insert(Student elt)
     {
         students.add(elt);
-        int index = size() -1; // Index of the added node(student)
-        // bubble up
-        while (index > 0 && students.get(index).compareTo(students.get(parent(index))) > 0){
-            swap(index, parent(index)); // after comparison swap parent and new node
-            index = parent(index); // child node is now the parent
-        }
+        int index = size() -1; // index of the added node(student)
+        elt.setIndex(index); // set index for student
+        bubbleUp(elt);
     }
 
     public void addGrade(Student elt, double gradePointsPerUnit, int units)
     {
-        int index = students.indexOf(elt);
+        int index = elt.getIndex();
 
         if (index != -1){ // if the student exists
             elt.addGrade(gradePointsPerUnit, units); // update the GPA
             maxHeapify(index); // bubble down
-            // bubble up
-            while (index > 0 && students.get(index).compareTo(students.get(parent(index))) > 0){
-                swap(index, parent(index)); // after comparison swap parent and new node
-                index = parent(index); // child node is now the parent
-            }
+            bubbleUp(elt); // bubble up
         } else {
             throw new IllegalArgumentException("Student does not exist");
+        }
+    }
+
+    public void bubbleUp(Student elt)
+    {
+        int index = students.indexOf(elt);
+
+        while (elt.compareTo(students.get(parent(index))) > 0){
+            swap(index, parent(index)); // after comparison swap parent and new node
+            index = parent(index); // child node is now the parent
+            elt.setIndex(index); // new index set
         }
     }
 
@@ -90,6 +94,9 @@ public class MaxHeap
         Student val = students.get(from);
         students.set(from,  students.get(to));
         students.set(to,  val);
+
+        students.get(from).setIndex(from);
+        students.get(to).setIndex(to);
     }
 
     private void maxHeapify(int index) // this method is only used for bubble down

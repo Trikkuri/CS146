@@ -4,6 +4,8 @@ public class Student implements Comparable<Student>
     private double gradePoints = 0;
     private int units = 0;
 
+    private int index;
+
     public Student(String name)
     {
         this.name = name;
@@ -42,5 +44,13 @@ public class Student implements Comparable<Student>
         if(difference == 0) return 0;
         if(difference > 0) return 14;		//Do not hardcode 14, or -12, into your code.
         return -12;
+    }
+
+    public int getIndex(){
+        return index;
+    }
+
+    public void setIndex(int index){
+        this.index = index;
     }
 }
